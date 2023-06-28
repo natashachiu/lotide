@@ -6,12 +6,11 @@ const eqArrays = function(arr1, arr2) {
   return true;
 };
 
-const assertArraysEqual = function(arr1, arr2) {
-  eqArrays(arr1, arr2) ?
-    console.log("✅ The arrays are equal") :
-    console.log("🛑 The arrays are not equal");
+const assertArraysEqual = function(actual, expected) {
+  eqArrays(actual, expected) ?
+    console.log(`✅  Assertion Passed: ${actual} === ${expected}`) :
+    console.log(`🛑 Assertion Failed: ${actual} !== ${expected}`);
 };
-
 
 const middle = function(arr) {
   const midpoint = Math.floor(arr.length / 2);

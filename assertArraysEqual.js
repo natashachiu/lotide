@@ -8,8 +8,8 @@ const eqArrays = function(arr1, arr2) {
 
 const assertArraysEqual = function(actual, expected) {
   eqArrays(actual, expected) ?
-    console.log("✅ The arrays are equal") :
-    console.log("🛑 The arrays are not equal");
+    console.log(`✅  Assertion Passed: ${actual} === ${expected}`) :
+    console.log(`🛑 Assertion Failed: ${actual} !== ${expected}`);
 };
 
 assertArraysEqual([1, 2, 3], [1, 2, 3]);
