@@ -6,8 +6,8 @@ const eqArrays = function(arr1, arr2) {
   return true;
 };
 
-const assertArraysEqual = function(arr1, arr2) {
-  eqArrays(arr1, arr2) ?
+const assertArraysEqual = function(actual, expected) {
+  eqArrays(actual, expected) ?
     console.log("✅ The arrays are equal") :
     console.log("🛑 The arrays are not equal");
 };
