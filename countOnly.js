@@ -19,8 +19,6 @@ const countOnly = function(allItems, itemsToCount) {
       results[item]++;
   }
 
-
-
   return results;
 };
 
