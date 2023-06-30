@@ -33,7 +33,7 @@ const result2 = findKey({
   "elBulli": { stars: 3 },
   "Ora": { stars: 2 },
   "Akelarre": { stars: 3 }
-}, x => x.stars === 5); // => "noma"
+}, x => x.stars === 5);
 
 assertEqual(result1, "noma");
 assertEqual(result2, undefined);
