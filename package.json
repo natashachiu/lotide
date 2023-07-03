@@ -1,7 +1,7 @@
 {
-  "name": "lotide",
+  "name": "@natashachiu/lotide",
   "version": "1.0.0",
-  "description": "",
+  "description": "A mini clone of the Lodash library for learning purposes.",
   "main": "assertArraysEqual.js",
   "directories": {
     "test": "test"
@@ -14,7 +14,7 @@
     "url": "git+https://github.com/natashachiu/lotide.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Natasha Chiu",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/natashachiu/lotide/issues"
