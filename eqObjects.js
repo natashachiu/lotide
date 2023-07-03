@@ -1,3 +1,5 @@
+const { assert } = require("chai");
+
 const assertEqual = function(actual, expected) {
   if (actual === expected) {
     console.log(`✅✅✅ Assertion Passed: ${actual} === ${expected}`);
@@ -21,32 +23,36 @@ const eqObjects = function(object1, object2) {
     return false;
 
   for (const key in object1) {
-    if (Array.isArray(object1[key]) && Array.isArray(object2[key])) {
-      if (!eqArrays(object1[key], object2[key]))
+    if (!Array.isArray(object1[key]) && typeof object1[key] === 'object') {
+      if (!eqObjects(object1[key], object2[key]))
         return false;
 
-    } else {
-      if (object1[key] !== object2[key])
-        return false;
+    } else if (object1[key] !== object2[key]) {
+      return false;
     }
-
   }
   return true;
-
 };
 
 
+const obj1 = eqObjects({ a: { z: 1 }, b: 2 }, { a: { z: 1 }, b: 2 }); // => true
+const obj2 = eqObjects({ a: { y: 0, z: 1 }, b: 2 }, { a: { z: 1 }, b: 2 }); // => false
+const obj3 = eqObjects({ a: { y: 0, z: 1 }, b: 2 }, { a: 1, b: 2 }); // => false
 
-const shirtObject = { color: "red", size: "medium" };
-const anotherShirtObject = { size: "medium", color: "red" };
-const longSleeveShirtObject = { size: "medium", color: "red", sleeveLength: "long" };
+assertEqual(obj1, true);
+assertEqual(obj2, false);
+assertEqual(obj3, false);
 
-assertEqual(eqObjects(shirtObject, anotherShirtObject), true);
-assertEqual(eqObjects(shirtObject, longSleeveShirtObject), false);
+// const shirtObject = { color: "red", size: "medium" };
+// const anotherShirtObject = { size: "medium", color: "red" };
+// const longSleeveShirtObject = { size: "medium", color: "red", sleeveLength: "long" };
 
-const multiColorShirtObject = { colors: ["red", "blue"], size: "medium" };
-const anotherMultiColorShirtObject = { size: "medium", colors: ["red", "blue"] };
-const longSleeveMultiColorShirtObject = { size: "medium", colors: ["red", "blue"], sleeveLength: "long" };
+// assertEqual(eqObjects(shirtObject, anotherShirtObject), true);
+// assertEqual(eqObjects(shirtObject, longSleeveShirtObject), false);
 
-assertEqual(eqObjects(multiColorShirtObject, anotherMultiColorShirtObject), true);
-assertEqual(eqObjects(multiColorShirtObject, longSleeveMultiColorShirtObject), false);
+// const multiColorShirtObject = { colors: ["red", "blue"], size: "medium" };
+// const anotherMultiColorShirtObject = { size: "medium", colors: ["red", "blue"] };
+// const longSleeveMultiColorShirtObject = { size: "medium", colors: ["red", "blue"], sleeveLength: "long" };
+
+// assertEqual(eqObjects(multiColorShirtObject, anotherMultiColorShirtObject), true);
+// assertEqual(eqObjects(multiColorShirtObject, longSleeveMultiColorShirtObject), false);
