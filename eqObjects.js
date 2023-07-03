@@ -1,5 +1,3 @@
-const { assert } = require("chai");
-
 const assertEqual = function(actual, expected) {
   if (actual === expected) {
     console.log(`✅✅✅ Assertion Passed: ${actual} === ${expected}`);
@@ -38,10 +36,14 @@ const eqObjects = function(object1, object2) {
 const obj1 = eqObjects({ a: { z: 1 }, b: 2 }, { a: { z: 1 }, b: 2 }); // => true
 const obj2 = eqObjects({ a: { y: 0, z: 1 }, b: 2 }, { a: { z: 1 }, b: 2 }); // => false
 const obj3 = eqObjects({ a: { y: 0, z: 1 }, b: 2 }, { a: 1, b: 2 }); // => false
+const obj4 = eqObjects({ a: { z: { y: 0 } }, b: 2 }, { a: { z: { y: 0 } }, b: 2 }); // => true
+const obj5 = eqObjects({ a: { z: { y: 0 }, d: { e: { f: 1 } } }, b: 2 }, { a: { z: { y: 0 }, d: { e: { f: 1 } } }, b: 2 },); // => true
 
 assertEqual(obj1, true);
 assertEqual(obj2, false);
 assertEqual(obj3, false);
+assertEqual(obj4, true);
+assertEqual(obj5, true);
 
 // const shirtObject = { color: "red", size: "medium" };
 // const anotherShirtObject = { size: "medium", color: "red" };
