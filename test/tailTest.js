@@ -1,19 +1,20 @@
-const assertEqual = require("../assertEqual");
+const { expect } = require("chai");
+// const assertEqual = require("../assertEqual");
 const tail = require("../tail");
 
-const result = tail(["Hello", "Lighthouse", "Labs"]);
-assertEqual(result.length, 2);
-assertEqual(result[0], "Lighthouse");
-assertEqual(result[1], "Labs");
-
-const words = ["Yo Yo", "Lighthouse", "Labs"];
-tail(words);
-assertEqual(words.length, 3);
-
-const one = tail(["one"]);
-assertEqual(one.length, 0);
-assertEqual(one[0], undefined);
-
-const empty = tail([]);
-assertEqual(empty.length, 0);
-assertEqual(empty[0], undefined);
+describe("#tail", () => {
+  it('returns ["Lighthouse", "Labs"] for ["Hello", "Lighthouse", "Labs"]', () => {
+    expect(tail(["Hello", "Lighthouse", "Labs"])).to.deep.equal(["Lighthouse", "Labs"]);
+  });
+  it('expect original array ["Yo Yo", "Lighthouse", "Labs"] to be unmodified', () => {
+    const words = ["Yo Yo", "Lighthouse", "Labs"];
+    tail(words);
+    expect(words.length).to.equal(3);
+  });
+  it('returns [] for ["one"]', () => {
+    expect(tail(["one"])).to.deep.equal([]);
+  });
+  it('returns [] for []', () => {
+    expect(tail([])).to.deep.equal([]);
+  });
+});
