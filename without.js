@@ -15,14 +15,3 @@ const without = function(arr1, arr2) {
 };
 
 module.exports = without;
-
-// assertArraysEqual(without([1, 2, 3], [1]), [2, 3]);
-// assertArraysEqual(without(["1", "2", "3"], [1, 2, "3"]), ["1", "2"]);
-// assertArraysEqual(without(["1", "2", 5], []), ["1", "2", 5]);
-// assertArraysEqual(without([1, "2", "3"], ["3", 4, 1]), ["2"]);
-// assertArraysEqual(without([1, 4, 9], [4, 9, 1]), []);
-
-
-// const words = ["hello", "world", "lighthouse"];
-// without(words, ["lighthouse"]);
-// assertArraysEqual(words, ["hello", "world", "lighthouse"]);
